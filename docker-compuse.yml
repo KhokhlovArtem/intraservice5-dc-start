@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  intraservice:
+    build: .
+    ports:
+      - "5001:5001"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - DOTNET_PRINT_TELEMETRY_MESSAGE=false
+      - ASPNETCORE_URLS=http://localhost:5001
+      - DbName=${db_name_var}
+      - DB_HOST=${db_host_var}
+      - DB_PORT=${db_port_var}
+      - DB_USER=${db_user_var}
+      - DB_PASS=${db_pass_var}
+    env_file:
+      - .env
+    restart: unless-stopped
+    container_name: intraservice-container

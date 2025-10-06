@@ -1,0 +1,5 @@
+distr/*
+.env
+.env.yml
+your_inventory_file.yml
+appsettings.json
