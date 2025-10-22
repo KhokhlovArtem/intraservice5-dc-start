@@ -23,4 +23,5 @@ docker compose logs -f
 docker exec intraservice-app printenv
 docker exec intraservice-agent printenv
 
-
+# Выключение
+docker compose down
