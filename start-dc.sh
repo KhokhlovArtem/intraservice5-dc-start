@@ -2,10 +2,10 @@
 export $(grep -v '^#' .env | xargs)
 
 # Сборка и запуск
-docker-compose up -d --build
+docker compose up -d --build
 
 # Только запуск
-docker-compose up -d
+docker compose up -d
 
 # Проверить, что appsettings.json правильно сконфигурирован в контейнере
 docker exec intraservice-app cat /var/www/intraservice/appsettings.json
@@ -17,7 +17,7 @@ docker logs intraservice-agent
 
 или 
 
-docker-compose logs -f
+docker compose logs -f
 
 # Проверить переменные окружения
 docker exec intraservice-app printenv
