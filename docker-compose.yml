@@ -39,7 +39,11 @@ services:
       - DB_PASS='${DB_PASS}'
       - IntraServiceUrl=${INTRA_SERVICE_URL}
       - AgentUrl=${AGENT_URL}
+<<<<<<< HEAD
       #- ASPNETCORE_ENVIRONMENT=${ASPNETCORE_ENVIRONMENT}
+=======
+      - ASPNETCORE_ENVIRONMENT=${ASPNETCORE_ENVIRONMENT}
+>>>>>>> 09804fe (Update docker-compose.yml)
       - ASPNETCORE_URLS=http://+:80
       - ASPNETCORE_FORWARDEDHEADERS_ENABLED=true
       - FORWARDED_ALLOW_IPS=*
