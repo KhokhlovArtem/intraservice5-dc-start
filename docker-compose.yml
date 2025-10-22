@@ -1,35 +1,41 @@
 version: '3.8'
 
 services:
-  intraservice:
-    build: .
-    ports:
-      - "5001:5001"
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Production
-      - DOTNET_PRINT_TELEMETRY_MESSAGE=false
-      - ASPNETCORE_URLS=http://localhost:5001
-      - DbName=${db_name_var}
-      - DB_HOST=${db_host_var}
-      - DB_PORT=${db_port_var}
-      - DB_USER=${db_user_var}
-      - DB_PASS=${db_pass_var}
-    env_file:
-      - .env
+  app:
+    build:
+      context: .
+      dockerfile: app/Dockerfile
+    container_name: intraservice-app
     restart: unless-stopped
-    container_name: intraservice-container
-    ## https://phoenixnap.com/kb/letsencrypt-docker
-    webserver:
-    image: nginx:latest
     ports:
-      - 80:80
-      - 443:443
-    restart: always
-    volumes:
-      - ./nginx/conf/:/etc/nginx/conf.d/:ro
-      - ./certbot/www/:/var/www/certbot/:ro
-  certbot:
-    image: certbot/certbot:latest
-    volumes:
-      - ./certbot/www/:/var/www/certbot/:rw
-      - ./certbot/conf/:/etc/letsencrypt/:rw
+      - "${APP_PORT}:${APP_CONTAINER_PORT}"
+    environment:
+      - DB_HOST=${DB_HOST}
+      - DB_PORT=${DB_PORT}
+      - DB_NAME=${DB_NAME}
+      - DB_USER=${DB_USER}
+      - DB_PASS=${DB_PASS}
+      - IntraServiceUrl=${INTRA_SERVICE_URL}
+      - AgentUrl=${AGENT_URL}
+    networks:
+      - app-network
+
+  app-agent:
+    build:
+      context: .
+      dockerfile: app-agent/Dockerfile
+    container_name: intraservice-agent
+    restart: unless-stopped
+    ports:
+      - "${AGENT_PORT}:${AGENT_CONTAINER_PORT}"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=${ASPNETCORE_ENVIRONMENT}
+      # Добавьте другие переменные для app-agent если нужны
+    depends_on:
+      - app
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
