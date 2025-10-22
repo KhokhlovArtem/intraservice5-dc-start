@@ -18,7 +18,7 @@ RUN apt-get update && \
 WORKDIR /var/www/intraservice-agent
 
 # Копируем содержимое из подготовленной стадии
-COPY --from=preparer /download/5.4.7-linux-agent/ .
+COPY --from=preparer /download/agent/ .
 
 # Копируем шаблон appsettings.json
 COPY appsettings.template.json /appsettings.template.json
