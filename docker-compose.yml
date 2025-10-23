@@ -17,6 +17,9 @@ services:
       - DB_PASS='${DB_PASS}'
       - IntraServiceUrl=${INTRA_SERVICE_URL}
       - AgentUrl=${AGENT_URL}
+      - ASPNETCORE_URLS=http://+:80
+      - ASPNETCORE_FORWARDEDHEADERS_ENABLED=true
+      - FORWARDED_ALLOW_IPS=*
     networks:
       - app-network
 
@@ -29,8 +32,17 @@ services:
     ports:
       - "${AGENT_PORT}:${AGENT_CONTAINER_PORT}"
     environment:
+      - DB_HOST=${DB_HOST}
+      - DB_PORT=${DB_PORT}
+      - DB_NAME=${DB_NAME}
+      - DB_USER=${DB_USER}
+      - DB_PASS='${DB_PASS}'
+      - IntraServiceUrl=${INTRA_SERVICE_URL}
+      - AgentUrl=${AGENT_URL}
       - ASPNETCORE_ENVIRONMENT=${ASPNETCORE_ENVIRONMENT}
-      # Добавьте другие переменные для app-agent если нужны
+      - ASPNETCORE_URLS=http://+:80
+      - ASPNETCORE_FORWARDEDHEADERS_ENABLED=true
+      - FORWARDED_ALLOW_IPS=*
     depends_on:
       - app
     networks:
