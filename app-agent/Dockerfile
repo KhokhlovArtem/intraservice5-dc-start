@@ -21,7 +21,7 @@ WORKDIR /var/www/intraservice-agent
 COPY --from=preparer /download/agent/ .
 
 # Копируем шаблон appsettings.json
-COPY appsettings.template.json /appsettings.template.json
+COPY appsettings-agent.template.json /appsettings.template.json
 
 EXPOSE 5002
 
