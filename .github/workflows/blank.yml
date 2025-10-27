@@ -61,3 +61,9 @@ jobs:
           
           # Проверяем статус контейнеров
           docker compose ps
+          
+          # Проверяем логи контейнера intraservice-app
+          docker compose logs intraservice-app 
+
+          # Проверяем логи контейнера intraservice-agent
+          docker compose logs intraservice-agent
