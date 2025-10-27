@@ -47,9 +47,9 @@ jobs:
           } > .env
 
       # Runs a single command using the runners shell
-      - name: Deploy with docker-compose
+      - name: Deploy with docker compose
         run: |
-          docker-compose --env-file .env up -d --build
+          docker compose --env-file .env up -d --build
       
       # Health checks 
       - name: Health checks
