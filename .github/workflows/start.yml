@@ -27,6 +27,20 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Debug password issues
+        env:
+          DB_PASS: ${{ secrets.DB_PASS }}
+        run: |
+          echo "🔍 Диагностика пароля:"
+          echo "Длина пароля: ${#DB_PASS} символов"
+          echo "Первые 5 символов: ${DB_PASS:0:5}"
+          echo "Последние 5 символов: ${DB_PASS: -5}"
+    
+          # Проверяем как пароль передается в контейнер
+          echo "Создаем тестовый контейнер:"
+          docker run --rm -e TEST_PASSWORD="$DB_PASS" alpine \
+          sh -c 'echo "Длина в контейнере: ${#TEST_PASSWORD}" && echo "Первые 10 символов: ${TEST_PASSWORD:0:10}"'
+
       - name: Create .env file from Environment
         env:
           RAW_PASSWORD: ${{ secrets.DB_PASSWORD }}
@@ -47,7 +61,7 @@ jobs:
           echo "DB_PORT=${{ vars.DB_PORT }}"
           echo "INTRA_SERVICE_URL=${{ vars.INTRA_SERVICE_URL }}"
           } > .env
-
+          
       # Runs a single command using the runners shell
       - name: Deploy with docker compose
         run: |
@@ -69,4 +83,3 @@ jobs:
 
           # Проверяем логи контейнера app-agent
           docker compose logs app-agent --tail=20
-          echo '$RAW_PASSWORD'
