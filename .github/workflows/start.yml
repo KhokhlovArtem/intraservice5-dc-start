@@ -69,5 +69,4 @@ jobs:
 
           # Проверяем логи контейнера app-agent
           docker compose logs app-agent --tail=20
-          
-          docker compose exec app cat appsettings.json
+          echo '$RAW_PASSWORD'
