@@ -1,4 +1,4 @@
-version: '3.8'
+#version: '3.8'
 
 services:
   app:
@@ -39,7 +39,7 @@ services:
       - DB_PASS='${DB_PASS}'
       - IntraServiceUrl=${INTRA_SERVICE_URL}
       - AgentUrl=${AGENT_URL}
-      - ASPNETCORE_ENVIRONMENT=${ASPNETCORE_ENVIRONMENT}
+      #- ASPNETCORE_ENVIRONMENT=${ASPNETCORE_ENVIRONMENT}
       - ASPNETCORE_URLS=http://+:80
       - ASPNETCORE_FORWARDEDHEADERS_ENABLED=true
       - FORWARDED_ALLOW_IPS=*
