@@ -40,10 +40,14 @@ services:
       - IntraServiceUrl=${INTRA_SERVICE_URL}
       - AgentUrl=${AGENT_URL}
 <<<<<<< HEAD
+<<<<<<< HEAD
       #- ASPNETCORE_ENVIRONMENT=${ASPNETCORE_ENVIRONMENT}
 =======
       - ASPNETCORE_ENVIRONMENT=${ASPNETCORE_ENVIRONMENT}
 >>>>>>> 09804fe (Update docker-compose.yml)
+=======
+      #- ASPNETCORE_ENVIRONMENT=${ASPNETCORE_ENVIRONMENT}
+>>>>>>> 669e6ee (docker compose)
       - ASPNETCORE_URLS=http://+:80
       - ASPNETCORE_FORWARDEDHEADERS_ENABLED=true
       - FORWARDED_ALLOW_IPS=*
