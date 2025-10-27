@@ -49,7 +49,7 @@ jobs:
           echo "# Секреты из Environment (не логируются)"
           echo "DB_HOST=${{ secrets.DB_HOST }}"
           echo "DB_NAME=${{ secrets.DB_NAME }}"
-          echo "DB_PASS=${DB_PASS}""
+          echo "DB_PASS=${DB_PASS}"
           echo "DB_USER=${{ secrets.DB_USER }}"
 
           echo "# Переменные из Environment"
