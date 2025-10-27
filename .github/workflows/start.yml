@@ -39,17 +39,17 @@ jobs:
           # Проверяем как пароль передается в контейнер
           echo "Создаем тестовый контейнер:"
           docker run --rm -e TEST_PASSWORD="$DB_PASS" alpine \
-          sh -c 'echo "Длина в контейнере: ${#TEST_PASSWORD}" && echo "Первые 10 символов: ${TEST_PASSWORD:0:10}"'
+          sh -c 'echo "Длина в контейнере: ${#TEST_PASSWORD}" && echo "Первые 5 символов: ${TEST_PASSWORD:0:5}"'
 
       - name: Create .env file from Environment
         env:
-          RAW_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          DB_PASS: ${{ secrets.DB_PASS }}
         run: |
           {
           echo "# Секреты из Environment (не логируются)"
           echo "DB_HOST=${{ secrets.DB_HOST }}"
           echo "DB_NAME=${{ secrets.DB_NAME }}"
-          echo "DB_PASS='$RAW_PASSWORD'"
+          echo "DB_PASS=${DB_PASS}""
           echo "DB_USER=${{ secrets.DB_USER }}"
 
           echo "# Переменные из Environment"
