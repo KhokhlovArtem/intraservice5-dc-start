@@ -67,3 +67,4 @@ jobs:
 
           # Проверяем логи контейнера app-agent
           docker compose logs app-agent --tail=20
+          cat .env
