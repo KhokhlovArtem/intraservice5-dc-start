@@ -15,7 +15,7 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-WORKDIR /var/www/intraservice-agent
+WORKDIR /var/www/intraservice.agent
 
 # Копируем содержимое из подготовленной стадии
 COPY --from=preparer /download/agent/ .
@@ -26,5 +26,5 @@ COPY appsettings-agent.template.json /appsettings.template.json
 EXPOSE 5002
 
 # Генерируем appsettings.json и запускаем приложение в одной команде
-CMD ["/bin/bash", "-c", "envsubst < /appsettings.template.json > /var/www/intraservice-agent/appsettings.json && \
-  echo 'appsettings.json generated successfully' && exec dotnet /var/www/intraservice-agent/IntraService.Agent.dll "]
+CMD ["/bin/bash", "-c", "envsubst < /appsettings.template.json > /var/www/intraservice.agent/appsettings.json && \
+  echo 'appsettings.json generated successfully' && exec dotnet /var/www/intraservice.agent/IntraService.Agent.dll "]
