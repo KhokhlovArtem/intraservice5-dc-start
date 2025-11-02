@@ -1,0 +1,14 @@
+name: intraservice-agent
+spec:
+  concurrency: 5
+  cores: 1
+  memory: 1GB
+  execution_timeout: 600s
+  service_account_id: <service-account-id>
+  image:
+    url: cr.yandex/<registry-id>/intraservice-agent:latest
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+      ASPNETCORE_URLS: http://0.0.0.0:8080
+  resources:
+    memory: 1GB

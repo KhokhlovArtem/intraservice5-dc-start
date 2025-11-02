@@ -1,0 +1,14 @@
+name: intraservice-app
+spec:
+  concurrency: 10
+  cores: 1
+  memory: 2GB
+  execution_timeout: 300s
+  service_account_id: <service-account-id>
+  image:
+    url: cr.yandex/<registry-id>/intraservice-app:latest
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+      ASPNETCORE_URLS: http://0.0.0.0:8080
+  resources:
+    memory: 2GB
