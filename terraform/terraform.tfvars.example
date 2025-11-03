@@ -1,0 +1,13 @@
+yc_folder_id          = "your_folder_id"
+yc_cloud_id           = "your_cloud_id"
+service_account_id    = "your_service_account_id"
+container_registry_id = "your_registry_id"
+app_image            = "cr.yandex/your-registry/intraservice-app:latest"
+agent_image          = "cr.yandex/your-registry/intraservice-agent:latest"
+environment          = "dev"
+
+# Optional - override defaults
+app_memory  = 128
+agent_memory = 128
+app_cpu     = 100
+agent_cpu   = 100

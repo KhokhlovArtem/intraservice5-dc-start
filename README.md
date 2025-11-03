@@ -14,6 +14,14 @@
 ├── docker-compose.yml
 ├── README.md
 └── start-dc.sh
+terraform/
+├── main.tf
+├── variables.tf
+├── outputs.tf
+├── versions.tf
+├── terraform.tfvars.example
+└── scripts/
+    └── deploy.sh
 
 # Запуск IntraService с использованием Docker Compose
 

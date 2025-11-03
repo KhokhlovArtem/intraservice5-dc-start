@@ -17,3 +17,6 @@ Terraform configuration for deploying IntraService to Yandex Cloud Serverless Co
 ```bash
 chmod +x scripts/deploy.sh
 ./scripts/deploy.sh
+```
+
+
