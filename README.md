@@ -1,7 +1,7 @@
 # intraservice5-dc-start
 
 
-
+```
 # tree 
 ├── app
 │   ├── appsettings.template.json
@@ -22,6 +22,7 @@ terraform/
 ├── terraform.tfvars.example
 └── scripts/
     └── deploy.sh
+```
 
 # Запуск IntraService с использованием Docker Compose
 
